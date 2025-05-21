@@ -107,11 +107,11 @@ resource "aws_launch_template" "component" {
 
 resource "aws_autoscaling_group" "component" {
   name                      = "${local.name}-${var.tags.Component}"
-  max_size                  = 10
+  max_size                  = 2
   min_size                  = 1
   health_check_grace_period = 60
   health_check_type         = "ELB"
-  desired_capacity          = 2
+  desired_capacity          = 1
   vpc_zone_identifier       = var.private_subnet_ids
   target_group_arns = [ aws_lb_target_group.component.arn ]
   
